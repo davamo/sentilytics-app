@@ -1,54 +1,89 @@
-# React + TypeScript + Vite
+# 📈 Sentilytics App
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+## Descripción
+Sentilytics App es una aplicación web desarrollada con React y TypeScript que permite realizar análisis de sentimientos en textos, identificando si el sentimiento expresado es positivo, negativo o neutral. La aplicación utiliza Material UI para ofrecer una interfaz atractiva y moderna, así como Chart.js para visualizar gráficamente el historial de análisis.
 
-Currently, two official plugins are available:
+## 🚀 Características Principales
+- Análisis automático de sentimientos (positivo, negativo, neutral).
+- Historial local con gráficos detallados.
+- Interfaz amigable y moderna con soporte para modo oscuro y claro.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## 🛠️ Tecnologías Utilizadas
+- **Frontend:** React 18, TypeScript, Material UI, Chart.js, Tailwind CSS
+- **Backend:** Node.js, Express
+- **Persistencia de Datos:** Almacenamiento local (LocalStorage)
 
-## Expanding the ESLint configuration
+## 🖥️ Instalación y Ejecución
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+### Requisitos previos
+- Node.js (v18+ recomendado)
+- npm o yarn
 
-```js
-export default tseslint.config({
-  extends: [
-    // Remove ...tseslint.configs.recommended and replace with this
-    ...tseslint.configs.recommendedTypeChecked,
-    // Alternatively, use this for stricter rules
-    ...tseslint.configs.strictTypeChecked,
-    // Optionally, add this for stylistic rules
-    ...tseslint.configs.stylisticTypeChecked,
-  ],
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
+### Pasos
+
+1. Clonar el repositorio:
+```bash
+git clone https://github.com/usuario/sentilytics-app.git
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
-
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
-
-export default tseslint.config({
-  plugins: {
-    // Add the react-x and react-dom plugins
-    'react-x': reactX,
-    'react-dom': reactDom,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended typescript rules
-    ...reactX.configs['recommended-typescript'].rules,
-    ...reactDom.configs.recommended.rules,
-  },
-})
+2. Navegar al directorio:
+```bash
+cd sentilytics-app
 ```
+
+3. Instalar dependencias:
+```bash
+npm install
+```
+
+o usando Yarn:
+
+```bash
+yarn install
+```
+
+4. Ejecutar la aplicación:
+```bash
+npm run dev
+```
+
+5. Abrir en el navegador:
+```
+http://localhost:5173
+```
+
+## 📦 Cómo usar
+- Ingresa el texto que deseas analizar.
+- Presiona **"Analizar Sentimiento"**.
+- Revisa los resultados instantáneamente.
+- Accede al historial para visualizar gráficos detallados de análisis previos.
+
+## 📌 Estructura del Proyecto
+```
+src
+├── assets/
+│   └── react.svg
+├── components/
+│   ├── Loading.tsx
+│   ├── Navbar.tsx
+│   ├── ResultDisplay.tsx
+│   ├── TextForm.tsx
+│   └── ThemeToggle.tsx
+├── pages/
+│   ├── HistoryPage.tsx
+│   └── Home.tsx
+├── services/
+│   ├── api.ts
+│   └── historyApi.ts
+├── App.css
+├── App.tsx
+├── index.css
+├── index.ts
+├── main.tsx
+└── vite-env.d.ts
+```
+
+## 📄 Licencia
+Este proyecto está bajo la licencia MIT.
+
+desarrollador:  davamo  <www.davamo.cl> 
