@@ -1,89 +1,142 @@
-# 📈 Sentilytics App
 
-## Descripción
-Sentilytics App es una aplicación web desarrollada con React y TypeScript que permite realizar análisis de sentimientos en textos, identificando si el sentimiento expresado es positivo, negativo o neutral. La aplicación utiliza Material UI para ofrecer una interfaz atractiva y moderna, así como Chart.js para visualizar gráficamente el historial de análisis.
+# Sentilytics App 💬
 
-## 🚀 Características Principales
+Aplicación web desarrollada con React + TypeScript para análisis de sentimientos en texto, visualización de resultados y navegación de historial. Utiliza Material UI y Chart.js para una experiencia de usuario moderna e interactiva.
+
+---
+
+## 🚀 Características
+
 - Análisis automático de sentimientos (positivo, negativo, neutral).
-- Historial local con gráficos detallados.
-- Interfaz amigable y moderna con soporte para modo oscuro y claro.
+- Interfaz clara y responsiva con temas claro/oscuro.
+- Historial de análisis persistido localmente (o vía API).
+- Visualización de resultados con gráficos circulares y de barras.
+- Navegación entre Home, Resultados y Historial.
 
-## 🛠️ Tecnologías Utilizadas
-- **Frontend:** React 18, TypeScript, Material UI, Chart.js, Tailwind CSS
-- **Backend:** Node.js, Express
-- **Persistencia de Datos:** Almacenamiento local (LocalStorage)
+---
 
-## 🖥️ Instalación y Ejecución
+## 🧰 Tecnologías Utilizadas
 
-### Requisitos previos
-- Node.js (v18+ recomendado)
+- **Frontend:** React 19, TypeScript, Vite, Tailwind CSS, Material UI, Chart.js
+- **Backend:** Node.js + Express (API REST)
+- **Persistencia:** LocalStorage y consumo de API externa (`/api/analysis`)
+
+---
+
+## ⚙️ Instalación y Ejecución
+
+### 🔧 Requisitos Previos
+
+- Node.js v18+
 - npm o yarn
 
-### Pasos
+### ▶️ Pasos
 
-1. Clonar el repositorio:
 ```bash
-git clone https://github.com/usuario/sentilytics-app.git
-```
-
-2. Navegar al directorio:
-```bash
+git clone https://github.com/davamo/sentilytics-app.git
 cd sentilytics-app
-```
-
-3. Instalar dependencias:
-```bash
 npm install
-```
-
-o usando Yarn:
-
-```bash
-yarn install
-```
-
-4. Ejecutar la aplicación:
-```bash
 npm run dev
 ```
 
-5. Abrir en el navegador:
+La aplicación estará disponible en:
+
 ```
 http://localhost:5173
 ```
 
-## 📦 Cómo usar
-- Ingresa el texto que deseas analizar.
-- Presiona **"Analizar Sentimiento"**.
-- Revisa los resultados instantáneamente.
-- Accede al historial para visualizar gráficos detallados de análisis previos.
+---
 
-## 📌 Estructura del Proyecto
+## 📦 Estructura del Proyecto
+
 ```
-src
-├── assets/
-│   └── react.svg
-├── components/
-│   ├── Loading.tsx
+src/
+├── components/          # Componentes visuales reutilizables
 │   ├── Navbar.tsx
-│   ├── ResultDisplay.tsx
 │   ├── TextForm.tsx
+│   ├── ResultDisplay.tsx
 │   └── ThemeToggle.tsx
-├── pages/
-│   ├── HistoryPage.tsx
-│   └── Home.tsx
-├── services/
+├── pages/               # Páginas principales (Home, Historial)
+│   ├── Home.tsx
+│   └── HistoryPage.tsx
+├── services/            # Conexiones a APIs
 │   ├── api.ts
 │   └── historyApi.ts
-├── App.css
-├── App.tsx
-├── index.css
-├── index.ts
-├── main.tsx
-└── vite-env.d.ts
+├── App.tsx              # Enrutamiento principal
+├── main.tsx             # Punto de entrada
 ```
 
-## 📄 Licencia
-Este proyecto está bajo la licencia MIT.
+---
 
-desarrollador:  davamo  <www.davamo.cl> 
+## 🌐 Consumo del Backend
+
+El frontend espera que el backend esté disponible en:
+
+```
+http://localhost:5000/api/analysis
+```
+
+El análisis de sentimientos se realiza vía:
+
+```ts
+POST /api/analysis
+Body: { text: string }
+```
+
+---
+
+## 📄 Simulación de despliegue en Azure (hipotética)
+
+- **Frontend hosting**: Azure Static Web Apps
+- **CI/CD**: GitHub Actions
+- **Conexión al backend**: API REST en Azure App Service
+
+### GitHub Actions (ejemplo simple)
+
+```yaml
+name: Deploy Vite App
+
+on:
+  push:
+    branches: [main]
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-node@v3
+        with:
+          node-version: 18
+
+      - run: npm install
+      - run: npm run build
+
+      - name: Deploy to Static Web Apps
+        uses: Azure/static-web-apps-deploy@v1
+        with:
+          azure_static_web_apps_api_token: ${{ secrets.AZURE_DEPLOY_TOKEN }}
+          repo_token: ${{ secrets.GITHUB_TOKEN }}
+          action: "upload"
+          app_location: "/"
+          output_location: "dist"
+```
+
+---
+
+## 🧪 To-Do
+
+- [x] Implementar análisis de texto
+- [x] Visualización con gráficos
+- [x] Modo oscuro/claro
+- [ ] Guardar historial en base de datos (no solo LocalStorage)
+- [ ] Desplegar en Azure Static Web Apps
+
+---
+
+## 👨‍💻 Autor
+
+Desarrollado por [davamo](mailto:davamo@davamo.cl)  
+GitHub: [https://github.com/davamo/sentilytics-app](https://github.com/davamo/sentilytics-app)
+
+---
